@@ -4,12 +4,10 @@ using System.Collections.Generic;
 var currentDirectory = Directory.GetCurrentDirectory();
 var storesDirectory = Path.Combine(currentDirectory, "stores");
 
-var salesFiles = FindFiles(storesDirectory);
+var salesTotalDir = Path.Combine(currentDirectory, "salesTotalDir");
+Directory.CreateDirectory(salesTotalDir);   // Add this line of code
 
-foreach (var file in salesFiles)
-{
-    Console.WriteLine(file);
-}
+var salesFiles = FindFiles(storesDirectory);
 
 IEnumerable<string> FindFiles(string folderName)
 {
