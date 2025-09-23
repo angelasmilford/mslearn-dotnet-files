@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 var currentDirectory = Directory.GetCurrentDirectory();
 var storesDirectory = Path.Combine(currentDirectory, "stores");
@@ -27,3 +28,5 @@ IEnumerable<string> FindFiles(string folderName)
 
     return salesFiles;
 }
+
+record SalesData (double Total);
