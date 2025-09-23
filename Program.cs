@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 
 var currentDirectory = Directory.GetCurrentDirectory();
-var storesDirectory = Path.Combine(currentDirectory, "stores");
+var storesDir = Path.Combine(currentDirectory, "stores");
 
 var salesTotalDir = Path.Combine(currentDirectory, "salesTotalDir");
-Directory.CreateDirectory(salesTotalDir);     
-var salesFiles = FindFiles(storesDirectory);
+Directory.CreateDirectory(salesTotalDir);
+
+var salesFiles = FindFiles(storesDir);
+
+var salesTotal = CalculateSalesTotal(salesFiles); // Add this line of code
 
 File.WriteAllText(Path.Combine(salesTotalDir, "totals.txt"), String.Empty);
 
