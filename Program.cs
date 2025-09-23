@@ -10,9 +10,9 @@ Directory.CreateDirectory(salesTotalDir);
 
 var salesFiles = FindFiles(storesDir);
 
-var salesTotal = CalculateSalesTotal(salesFiles); // Add this line of code
+var salesTotal = CalculateSalesTotal(salesFiles);
 
-File.WriteAllText(Path.Combine(salesTotalDir, "totals.txt"), String.Empty);
+File.AppendAllText(Path.Combine(salesTotalDir, "totals.txt"), $"{salesTotal}{Environment.NewLine}");
 
 IEnumerable<string> FindFiles(string folderName)
 {
@@ -38,7 +38,7 @@ double CalculateSalesTotal(IEnumerable<string> salesFiles)
 
     // Loop over each file path in salesFiles
     foreach (var file in salesFiles)
-    {      
+    {
         // Read the contents of the file
         string salesJson = File.ReadAllText(file);
 
